@@ -31,7 +31,8 @@
 						<td>${item.idUsuario}</td>
 						<td>${item.Usuario}</td>
 						<td>${item.Pass}</td>
-						<td><a class="btn btn-warning" href="https://www.google.com">Google</a></td>
+						<td><a href="ControllerMostrarInformacion?usu=${item.idUsuario}"
+								class="btn btn-warning">ELIMINAR <a> </td>
 					</tr>
 					`
 					console.log(item.Pass);
