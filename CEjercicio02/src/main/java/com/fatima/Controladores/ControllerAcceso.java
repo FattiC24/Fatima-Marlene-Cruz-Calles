@@ -11,6 +11,7 @@ import com.fatima.Dao.ClsUsuario;
 import com.fatima.Entidades.Loguin;
 import com.fatima.Negocio.ClsLoguin;
 
+
 /**
  * Servlet implementation class ControllerAcceso
  */
@@ -61,8 +62,6 @@ public class ControllerAcceso extends HttpServlet {
 			}
 		}else {
 			response.sendRedirect("Error.jsp");
-		
-	}
-	
+		}
 	}
 }

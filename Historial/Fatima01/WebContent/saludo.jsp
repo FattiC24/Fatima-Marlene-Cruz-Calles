@@ -19,6 +19,17 @@
 					let datos = JSON.parse(response);
 				
 					console.log(datos);
+					var tabla = document.getElementById('tablaDatos');
+					for (let item of datos){
+						tabla.inner +=
+						<tr>
+						<td>${item.idUsuario}</td>
+						<td>${item.Usuario}</td>
+						<td>${item.Pass}</td>
+						<td> <a href="ControllerMostrarInformacion?IdUsuario=${item.idUsuario}&Eliminar=btne" class="btn btn-danger">ELIMINAR</a>
+						<a href = "add.jsp?Id=${item.idUsuario}&Usuario=${item.Usuario}&Pass=item.Pass" class="btn btn-warning">ACTUALIZAR</a>
+								
+					}]
 				});
 			});
 
