@@ -37,7 +37,7 @@ public class ClsUsuario {
 	public void Eliminar(usuario user) {
 		try {
 			CallableStatement consulta = con.prepareCall("call SP_D_USER(?)");
-			consulta.setInt("pIdUsuario", user.getIdUsuario());
+			consulta.setInt("PidUsuario", user.getIdUsuario());
 			consulta.executeQuery();
 			System.out.println("Eliminado");
 			con.close();
@@ -73,5 +73,4 @@ public class ClsUsuario {
 			System.out.println(e);
 		}
 	}
-
 }

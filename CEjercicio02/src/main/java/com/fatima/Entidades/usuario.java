@@ -1,12 +1,12 @@
 package com.fatima.Entidades;
 
-import com.fatima.Entidades.tipoUsuarios;
 
 public class usuario extends tipoUsuarios{
 
 	protected int idUsuario;
     protected String Usuario;
     protected String Pass;
+    protected int TipoUsuario;
     
 	public int getIdUsuario() {
 		return idUsuario;
@@ -25,5 +25,11 @@ public class usuario extends tipoUsuarios{
 	}
 	public void setPass(String pass) {
 		Pass = pass;
+	}
+	public int getTipoUsuario() {
+		return TipoUsuario;
+	}
+	public void setTipoUsuario(int tipoUsuario) {
+		TipoUsuario = tipoUsuario;
 	}
 }

@@ -2,20 +2,16 @@ package com.fatima.Controladores;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fatima.Dao.ClsUsuario;
-import com.fatima.Entidades.Loguin;
-import com.fatima.Negocio.ClsLoguin;
-
+import com.fatima.Entidades.usuario;
+import com.fatima.Negocio.*;
 
 /**
  * Servlet implementation class ControllerAcceso
  */
-@WebServlet("/ControllerAcceso")
 public class ControllerAcceso extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,28 +36,31 @@ public class ControllerAcceso extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
 		
-		String user = request.getParameter("user");
-		String pass = request.getParameter("pass");
-		Loguin log = new Loguin();
-		ClsLoguin clsL = new ClsLoguin();
-		
-		log.setUser(user);
-		log.setPass(pass);
-		
-		int valoracceso = clsL.acceso(log);
-		
-		if(valoracceso==1) {
-			ClsUsuario clsUsuario = new ClsUsuario();
-			var Usuario = clsUsuario.ListadoUSUARIOS();
-			response.sendRedirect("saludo.jsp");
-			for(var iterar : Usuario)
-			{
-				System.out.println(iterar.getUsuario());
+				String user = request.getParameter("user");
+				String pass = request.getParameter("pass");
+				
+				usuario log = new usuario();
+				clsLogin clsL = new clsLogin();
+
+				log.setUsuario(user);
+				log.setPass(pass);
+
+				int valoracceso = clsL.acceso(log);
+
+				if (valoracceso == 1) {
+					//Este es un usuario Administrador
+					System.out.println("> Administrador.");
+					response.sendRedirect("Administrador.jsp");
+				} else if (valoracceso == 2) {
+					//Este es un usuario normal
+					System.out.println("> Usuario.");
+					response.sendRedirect("usuario.jsp");
+				} else {
+					System.out.println("> Error.");
+					response.sendRedirect("Error.jsp");
+				}
 			}
-		}else {
-			response.sendRedirect("Error.jsp");
-		}
-	}
+
 }

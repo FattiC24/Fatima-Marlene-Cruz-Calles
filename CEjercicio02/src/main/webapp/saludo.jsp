@@ -52,6 +52,7 @@
 			<th>Usuario</th>
 			<th>Password</th>
 			<th>Acciones</th>
+			
 		</thead>
 	</table>
 </body>

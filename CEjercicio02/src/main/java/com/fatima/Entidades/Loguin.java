@@ -17,4 +17,5 @@ public class Loguin {
 	public void setPass(String pass) {
 		Pass = pass;
 	}
+	
 }

@@ -4,4 +4,34 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>ControllerLoguinBD</servlet-name>
+  	<display-name>ControllerLoguinBD</display-name>
+  	<description></description>
+  	<servlet-class>com.fatima.Controladores.ControllerLoguinBD</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerAcceso</servlet-name>
+  	<display-name>ControllerAcceso</display-name>
+  	<description></description>
+  	<servlet-class>com.fatima.Controladores.ControllerAcceso</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ControllerMostrarInformacion</servlet-name>
+  	<display-name>ControllerMostrarInformacion</display-name>
+  	<description></description>
+  	<servlet-class>com.fatima.Controladores.ControllerMostrarInformacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ControllerLoguinBD</servlet-name>
+  	<url-pattern>/ControllerLoguinBD</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerAcceso</servlet-name>
+  	<url-pattern>/ControllerAcceso</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ControllerMostrarInformacion</servlet-name>
+  	<url-pattern>/ControllerMostrarInformacion</url-pattern>
+  </servlet-mapping>
 </web-app>
