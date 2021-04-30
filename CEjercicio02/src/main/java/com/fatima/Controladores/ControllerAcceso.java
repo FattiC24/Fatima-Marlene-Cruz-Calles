@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fatima.Entidades.usuario;
 import com.fatima.Negocio.*;
@@ -38,29 +39,39 @@ public class ControllerAcceso extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
-				String user = request.getParameter("user");
-				String pass = request.getParameter("pass");
+			HttpSession session  = request.getSession(true);
+			String user = request.getParameter("user");
+			String pass = request.getParameter("pass");
 				
-				usuario log = new usuario();
-				clsLogin clsL = new clsLogin();
+			usuario log = new usuario();
+			clsLogin clsL = new clsLogin();
 
-				log.setUsuario(user);
-				log.setPass(pass);
+			log.setUsuario(user);
+			log.setPass(pass);
+			
+			String btncerrar = request.getParameter("btncerrar");
+			if(btncerrar != null) {
+				response.sendRedirect("index.jsp");
+				session.invalidate();
+			}else {
+			
+			
+			int valoracceso = clsL.acceso(log);
 
-				int valoracceso = clsL.acceso(log);
-
-				if (valoracceso == 1) {
-					//Este es un usuario Administrador
-					System.out.println("> Administrador.");
-					response.sendRedirect("Administrador.jsp");
-				} else if (valoracceso == 2) {
-					//Este es un usuario normal
-					System.out.println("> Usuario.");
-					response.sendRedirect("usuario.jsp");
-				} else {
-					System.out.println("> Error.");
+			if (valoracceso == 1) {
+				//Este es un usuario Administrador
+				System.out.println("> Administrador.");
+				response.sendRedirect("Administrador.jsp");
+				session.setAttribute("usuario", valoracceso);
+				
+			} else if (valoracceso == 2) {
+				//Este es un usuario normal
+				System.out.println("> Usuario.");
+				response.sendRedirect("usuario.jsp");
+			} else {
+				System.out.println("> Error.");
 					response.sendRedirect("Error.jsp");
 				}
 			}
-
+	}
 }
